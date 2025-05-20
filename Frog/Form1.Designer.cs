@@ -28,35 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtArea = new TextBox();
             btnExecutar = new Button();
             txtConexaoBanco = new TextBox();
             btnConectar = new Button();
             txtGrid = new DataGridView();
+            lblStatus = new Label();
+            txtArea = new TextBox();
             ((System.ComponentModel.ISupportInitialize)txtGrid).BeginInit();
             SuspendLayout();
-            // 
-            // txtArea
-            // 
-            txtArea.Location = new Point(12, 42);
-            txtArea.Multiline = true;
-            txtArea.Name = "txtArea";
-            txtArea.ScrollBars = ScrollBars.Both;
-            txtArea.Size = new Size(486, 107);
-            txtArea.TabIndex = 0;
-            txtArea.Text = "select iduc, idregiao from uc_mig where rownum <= 2";
-            txtArea.WordWrap = false;
-            txtArea.TextChanged += textBox1_TextChanged;
-            txtArea.KeyDown += txtArea_KeyDown;
             // 
             // btnExecutar
             // 
             btnExecutar.Enabled = false;
-            btnExecutar.Location = new Point(14, 367);
+            btnExecutar.Location = new Point(14, 443);
             btnExecutar.Name = "btnExecutar";
-            btnExecutar.Size = new Size(75, 23);
+            btnExecutar.Size = new Size(88, 23);
             btnExecutar.TabIndex = 1;
-            btnExecutar.Text = "Executar";
+            btnExecutar.Text = "Executar (F9)";
             btnExecutar.UseVisualStyleBackColor = true;
             btnExecutar.Click += btnExecutar_Click;
             // 
@@ -67,7 +55,6 @@
             txtConexaoBanco.Size = new Size(403, 23);
             txtConexaoBanco.TabIndex = 2;
             txtConexaoBanco.Text = "User Id=e2desenv;Password=usetudo;Data Source=192.168.0.2:1521/desenve2";
-            txtConexaoBanco.TextChanged += textBox2_TextChanged;
             // 
             // btnConectar
             // 
@@ -83,21 +70,42 @@
             // 
             txtGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             txtGrid.EditMode = DataGridViewEditMode.EditOnF2;
-            txtGrid.Location = new Point(12, 155);
+            txtGrid.Location = new Point(12, 231);
             txtGrid.Name = "txtGrid";
-            txtGrid.Size = new Size(484, 206);
+            txtGrid.Size = new Size(577, 206);
             txtGrid.TabIndex = 4;
+            // 
+            // lblStatus
+            // 
+            lblStatus.AutoSize = true;
+            lblStatus.Location = new Point(503, 15);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(88, 15);
+            lblStatus.TabIndex = 5;
+            lblStatus.Text = "Não conectado";
+            // 
+            // txtArea
+            // 
+            txtArea.Location = new Point(12, 46);
+            txtArea.Multiline = true;
+            txtArea.Name = "txtArea";
+            txtArea.Size = new Size(577, 179);
+            txtArea.TabIndex = 6;
+            txtArea.Text = "select iduc, idregiao \r\n  from uc_mig \r\nwhere rownum <= 2\r\n\r\nselect sysdate\r\n  from dual\r\n\r\npkg_mig_uc\r\npkg_mig_pontosc\r\n\r\ntbi_uc_mig\r\ntbi_pontosc";
+            txtArea.WordWrap = false;
+            txtArea.KeyDown += txtArea_KeyDown;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(511, 397);
+            ClientSize = new Size(601, 473);
+            Controls.Add(txtArea);
+            Controls.Add(lblStatus);
             Controls.Add(txtGrid);
             Controls.Add(btnConectar);
             Controls.Add(txtConexaoBanco);
             Controls.Add(btnExecutar);
-            Controls.Add(txtArea);
             Name = "Form1";
             Text = "Frog 1.1.1.0";
             ((System.ComponentModel.ISupportInitialize)txtGrid).EndInit();
@@ -106,11 +114,11 @@
         }
 
         #endregion
-
-        private TextBox txtArea;
         private Button btnExecutar;
         private TextBox txtConexaoBanco;
         private Button btnConectar;
         private DataGridView txtGrid;
+        private Label lblStatus;
+        private TextBox txtArea;
     }
 }

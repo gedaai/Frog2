@@ -1,16 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\desenvolvimento\\Useall.E2.Devops\\Particular\\Frog\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|e:\\desenvolvimento\\useall.e2.devops\\particular\\frog\\frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|e:\\desenvolvimento\\useall.e2.devops\\particular\\frog\\frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\desenvolvimento\\Particular\\Frog2\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,36 +9,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "E:\\desenvolvimento\\Useall.E2.Devops\\Particular\\Frog\\Frog\\Form1.cs",
-              "RelativeDocumentMoniker": "Frog\\Form1.cs",
-              "ToolTip": "E:\\desenvolvimento\\Useall.E2.Devops\\Particular\\Frog\\Frog\\Form1.cs",
-              "RelativeToolTip": "Frog\\Form1.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAhwDcAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T12:38:46.007Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "E:\\desenvolvimento\\Useall.E2.Devops\\Particular\\Frog\\Frog\\Form1.cs",
-              "RelativeDocumentMoniker": "Frog\\Form1.cs",
-              "ToolTip": "E:\\desenvolvimento\\Useall.E2.Devops\\Particular\\Frog\\Frog\\Form1.cs [Design]",
-              "RelativeToolTip": "Frog\\Form1.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T12:29:12.354Z",
-              "EditorCaption": " [Design]"
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }
