@@ -61,7 +61,15 @@ namespace Frog.Utilitarios
 
         public void ColorirSQL(RichTextBox richTextBox)
         {
-            string[] palavrasReservadas = { "SELECT", "FROM", "WHERE", "INSERT", "UPDATE", "DELETE", "CALL" };
+            string[] palavrasReservadas = { "ACCESS","ADD","ALL","ALTER","AND","ANY","AS","ASC","AUDIT","BETWEEN","BY","CHAR","CHECK","CLUSTER","COLUMN",
+                                            "COMMENT","COMPRESS","CONNECT","CREATE","CURRENT","DATE","DECIMAL","DEFAULT","DELETE","DESC","DISTINCT","DROP",
+                                            "ELSE","EXCLUSIVE","EXISTS","FILE","FLOAT","FOR","FROM","GRANT","GROUP","HAVING","IDENTIFIED","IMMEDIATE","IN",
+                                            "INCREMENT","INDEX","INITIAL","INSERT","INTEGER","INTERSECT","INTO","IS","LEVEL","LIKE","LOCK","LONG","MAXEXTENTS",
+                                            "MINUS","MLSLABEL","MODE","MODIFY","NOAUDIT","NOCOMPRESS","NOT","NOWAIT","NULL","NUMBER","OF","OFFLINE","ON","ONLINE",
+                                            "OPTION","OR","ORDER","PCTFREE","PRIOR","PRIVILEGES","PUBLIC","RAW","RENAME","RESOURCE","REVOKE","ROW","ROWID","ROWNUM",
+                                            "ROWS","SELECT","SESSION","SET","SHARE","SIZE","SMALLINT","START","SUCCESSFUL","SYNONYM","SYSDATE","TABLE","THEN","TO",
+                                            "TRIGGER","UID","UNION","UNIQUE","UPDATE","USER","VALIDATE","VALUES","VARCHAR","VARCHAR2","VIEW","WHENEVER","WHERE","WITH",
+                                            "+","-","*","/","**", "<", ">", "<>", "ROWTYPE", "="};
 
             // Salva a posição atual do cursor
             int selStart = richTextBox.SelectionStart;
@@ -79,8 +87,16 @@ namespace Frog.Utilitarios
                 int startIndex = 0;
                 while ((startIndex = richTextBox.Text.IndexOf(palavra, startIndex, StringComparison.OrdinalIgnoreCase)) != -1)
                 {
-                    richTextBox.Select(startIndex, palavra.Length);
-                    richTextBox.SelectionColor = Color.Blue;
+                    var letraAnterior = richTextBox.Text.Substring(startIndex == 0 ? 0 : startIndex - 1, 1);
+                    var proximaLetra = richTextBox.Text.Substring(startIndex + palavra.Length, 1);
+
+                    if ((proximaLetra == " " || proximaLetra == "." || proximaLetra == ",") &&
+                        (letraAnterior == " " || letraAnterior == "." || letraAnterior == ","))
+                    {
+                        richTextBox.Select(startIndex, palavra.Length);
+                        richTextBox.SelectionColor = Color.Blue;
+                    }
+
                     startIndex += palavra.Length;
                 }
             }

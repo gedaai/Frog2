@@ -86,6 +86,7 @@
             // 
             // txtArea
             // 
+            txtArea.Enabled = false;
             txtArea.Location = new Point(12, 46);
             txtArea.Multiline = true;
             txtArea.Name = "txtArea";

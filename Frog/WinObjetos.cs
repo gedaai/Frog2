@@ -30,6 +30,26 @@ namespace Frog
 
         private void WinPackage_Load(object sender, EventArgs e)
         {
+            if (_type == "PACKAGE" || _type == "PACKAGE BODY")
+                btnSpecBody.Enabled = true;
+            else
+                btnSpecBody.Enabled = false;
+
+            CarregarSource();
+        }
+
+        private void btnSpecBody_Click(object sender, EventArgs e)
+        {
+            if (_type == "PACKAGE")
+                _type = "PACKAGE BODY";
+            else
+                _type = "PACKAGE";
+
+            CarregarSource();
+        }
+
+        public void CarregarSource()
+        {
             _utilBanco = new UtilBanco();
             var source = _utilBanco.RecuperarSourceObjeto(_conn, _nomeObjeto, _type);
 
@@ -38,6 +58,5 @@ namespace Frog
             _utilString = new UtilString();
             _utilString.ColorirSQL(rtSource);
         }
-
     }
 }

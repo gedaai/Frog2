@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             rtSource = new RichTextBox();
-            button1 = new Button();
+            btnSpecBody = new Button();
             SuspendLayout();
             // 
             // rtSource
@@ -41,21 +41,22 @@
             rtSource.Text = "";
             rtSource.WordWrap = false;
             // 
-            // button1
+            // btnSpecBody
             // 
-            button1.Location = new Point(8, 10);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 2;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnSpecBody.Location = new Point(8, 10);
+            btnSpecBody.Name = "btnSpecBody";
+            btnSpecBody.Size = new Size(75, 23);
+            btnSpecBody.TabIndex = 2;
+            btnSpecBody.Text = "Spec/Body";
+            btnSpecBody.UseVisualStyleBackColor = true;
+            btnSpecBody.Click += btnSpecBody_Click;
             // 
             // WinObjetos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(826, 634);
-            Controls.Add(button1);
+            Controls.Add(btnSpecBody);
             Controls.Add(rtSource);
             Name = "WinObjetos";
             Text = "Package";
@@ -65,6 +66,6 @@
 
         #endregion
         private RichTextBox rtSource;
-        private Button button1;
+        private Button btnSpecBody;
     }
 }

@@ -45,6 +45,7 @@ namespace Frog
 
             lblStatus.Text = "Conectado";
             btnExecutar.Enabled = true;
+            txtArea.Enabled = true;
 
             _utilBanco.FecharConexaoComBancoDeDados(_conn);
         }
