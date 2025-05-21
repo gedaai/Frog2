@@ -117,4 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtArea.Text" xml:space="preserve">
+    <value>select iduc, idregiao, nome 
+  from uc_mig 
+where rownum &lt;= 2
+
+select sysdate
+  from dual
+
+insert into tipos_lampadas (IDTIPOLAMPADA,DESCRICAO) values ('NG', 'TESTE')
+
+pkg_mig_uc
+pkg_mig_pontosc
+
+tbi_uc_mig
+tbi_pontosc</value>
+  </data>
 </root>

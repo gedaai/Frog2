@@ -18,6 +18,7 @@ namespace Frog.Utilitarios
             if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
+                conn.AutoCommit = false;
             }
         }
 
@@ -30,6 +31,16 @@ namespace Frog.Utilitarios
             {
                 conn.Close();
             }
+        }
+
+        public void Commit(OracleConnection conn)
+        {
+            conn.Commit();
+        }
+
+        public void Rollback(OracleConnection conn)
+        {
+            conn.Rollback();
         }
 
         public int RecuperarQuantidadeRegistrosDaQuery(OracleConnection conn, string query)
@@ -54,8 +65,6 @@ namespace Frog.Utilitarios
 
         public void IdentificaTipoObjeto(OracleConnection conn, string nome)
         {
-            AbrirConexaoComBancoDeDados(conn);
-
             var query = $@"SELECT object_type
                             FROM user_objects
                            where object_name = '{nome.ToUpper().Trim()}'";
@@ -86,14 +95,10 @@ namespace Frog.Utilitarios
                 var window = new WinObjetos(conn, nome.ToUpper().Trim(), tipo.ToUpper().Trim());
                 window.Show();
             }            
-
-            FecharConexaoComBancoDeDados(conn);
         }
 
         public string RecuperarSourceObjeto(OracleConnection conn, string nome, string tipo)
         {
-            AbrirConexaoComBancoDeDados(conn);
-
             var query = $@"select text
                              from user_SOURCE 
                             where name = '{nome.ToUpper().Trim()}'
@@ -107,8 +112,6 @@ namespace Frog.Utilitarios
             {
                 codigo.Append(reader.GetString(0));
             }
-
-            FecharConexaoComBancoDeDados(conn);
 
             return codigo.ToString();
         }

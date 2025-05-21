@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             btnExecutar = new Button();
             txtConexaoBanco = new TextBox();
             btnConectar = new Button();
             txtGrid = new DataGridView();
             lblStatus = new Label();
             txtArea = new TextBox();
+            btnCommit = new Button();
+            btnRollback = new Button();
             ((System.ComponentModel.ISupportInitialize)txtGrid).BeginInit();
             SuspendLayout();
             // 
@@ -90,17 +93,40 @@
             txtArea.Location = new Point(12, 46);
             txtArea.Multiline = true;
             txtArea.Name = "txtArea";
+            txtArea.ScrollBars = ScrollBars.Both;
             txtArea.Size = new Size(577, 179);
             txtArea.TabIndex = 6;
-            txtArea.Text = "select iduc, idregiao \r\n  from uc_mig \r\nwhere rownum <= 2\r\n\r\nselect sysdate\r\n  from dual\r\n\r\npkg_mig_uc\r\npkg_mig_pontosc\r\n\r\ntbi_uc_mig\r\ntbi_pontosc";
+            txtArea.Text = resources.GetString("txtArea.Text");
             txtArea.WordWrap = false;
             txtArea.KeyDown += txtArea_KeyDown;
+            // 
+            // btnCommit
+            // 
+            btnCommit.Location = new Point(104, 443);
+            btnCommit.Name = "btnCommit";
+            btnCommit.Size = new Size(75, 23);
+            btnCommit.TabIndex = 7;
+            btnCommit.Text = "Commit";
+            btnCommit.UseVisualStyleBackColor = true;
+            btnCommit.Click += btnCommit_Click;
+            // 
+            // btnRollback
+            // 
+            btnRollback.Location = new Point(182, 443);
+            btnRollback.Name = "btnRollback";
+            btnRollback.Size = new Size(75, 23);
+            btnRollback.TabIndex = 8;
+            btnRollback.Text = "Rollback";
+            btnRollback.UseVisualStyleBackColor = true;
+            btnRollback.Click += btnRollback_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(601, 473);
+            Controls.Add(btnRollback);
+            Controls.Add(btnCommit);
             Controls.Add(txtArea);
             Controls.Add(lblStatus);
             Controls.Add(txtGrid);
@@ -121,5 +147,7 @@
         private DataGridView txtGrid;
         private Label lblStatus;
         private TextBox txtArea;
+        private Button btnCommit;
+        private Button btnRollback;
     }
 }

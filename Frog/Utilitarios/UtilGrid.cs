@@ -34,7 +34,14 @@ namespace Frog.Utilitarios
             {
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
-                    dataGrid.Rows[linha].Cells[i].Value = reader.GetValue(i);
+                    try
+                    {
+                        dataGrid.Rows[linha].Cells[i].Value = reader.GetValue(i);
+                    }
+                    catch (Exception)
+                    {
+                        dataGrid.Rows[linha].Cells[i].Value = "";
+                    }                    
                 }
 
                 linha++;

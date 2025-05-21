@@ -36,15 +36,6 @@ namespace Frog
             _utilString = new UtilString();
             _utilBanco = new UtilBanco();
 
-            try
-            {
-                _utilBanco.AbrirConexaoComBancoDeDados(_conn);
-            }
-            catch (Exception)
-            {
-                return;
-            }
-
             var query = $@" select column_id, 
                                    column_name, 
                                    Case data_type
@@ -79,8 +70,6 @@ namespace Frog
             _utilGrid.AdicionarColunaCabecalho(dgTabela, colunas);
             _utilGrid.AdicionarLinhasNaGrid(dgTabela, qtdeLinhas);
             _utilGrid.AdicionarDadosNaGrid(dgTabela, reader);
-
-            _utilBanco.FecharConexaoComBancoDeDados(_conn);
         }
     }
 }

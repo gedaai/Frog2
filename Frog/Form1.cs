@@ -16,6 +16,9 @@ namespace Frog
         public Form1()
         {
             InitializeComponent();
+            _utilGrid = new UtilGrid();
+            _utilString = new UtilString();
+            _utilBanco = new UtilBanco();
         }
 
         private void btnConectar_Click(object sender, EventArgs e)
@@ -46,16 +49,10 @@ namespace Frog
             lblStatus.Text = "Conectado";
             btnExecutar.Enabled = true;
             txtArea.Enabled = true;
-
-            _utilBanco.FecharConexaoComBancoDeDados(_conn);
         }
 
         private void btnExecutar_Click(object sender, EventArgs e)
         {
-            _utilGrid = new UtilGrid();
-            _utilString = new UtilString();
-            _utilBanco = new UtilBanco();
-
             var consulta = _utilString.RecuperarBlocoTextoDoCursor(txtArea);
 
             if (String.IsNullOrEmpty(consulta)) return;
@@ -66,40 +63,14 @@ namespace Frog
                 return;
             }
 
-            try
+            if (consulta.ToUpper().Trim().StartsWith("SELECT"))
             {
-                _utilBanco.AbrirConexaoComBancoDeDados(_conn);
+                ExecutarConsulta(consulta);
             }
-            catch (Exception)
+            else
             {
-                return;
+                ExecutarComando(consulta);
             }
-
-            var query = consulta;
-
-            var qtdeLinhas = _utilBanco.RecuperarQuantidadeRegistrosDaQuery(_conn, query);
-
-            var reader = _utilBanco.RecuperarColunasCabecalhoDaGrid(_conn, query);
-
-            var colunas = new DataGridViewColumn[reader.FieldCount];
-            while (reader.Read())
-            {
-                for (int i = 0; i < reader.FieldCount; i++)
-                {
-                    colunas[i] = new DataGridViewTextBoxColumn();
-                    colunas[i].HeaderText = reader.GetName(i);
-                }
-                break;
-            }
-            var command = new OracleCommand(query, _conn);
-            reader = command.ExecuteReader();
-
-            _utilGrid.LimparGrid(txtGrid);
-            _utilGrid.AdicionarColunaCabecalho(txtGrid, colunas);
-            _utilGrid.AdicionarLinhasNaGrid(txtGrid, qtdeLinhas);
-            _utilGrid.AdicionarDadosNaGrid(txtGrid, reader);
-
-            _utilBanco.FecharConexaoComBancoDeDados(_conn);
         }
 
         private void txtArea_KeyDown(object sender, KeyEventArgs e)
@@ -112,9 +83,6 @@ namespace Frog
             }
             else if (e.KeyCode == Keys.F4)
             {
-                _utilString = new UtilString();
-                _utilBanco = new UtilBanco();
-
                 var nome = _utilString.RecuperarPalavraDoCursor(txtArea);
                 _utilBanco.IdentificaTipoObjeto(_conn, nome);
 
@@ -122,5 +90,67 @@ namespace Frog
             }
         }
 
+        public void ExecutarConsulta(string comando)
+        {
+            try
+            {
+                var query = comando;
+
+                var qtdeLinhas = _utilBanco.RecuperarQuantidadeRegistrosDaQuery(_conn, query);
+
+                if (qtdeLinhas <= 0)
+                {
+                    _utilGrid.LimparGrid(txtGrid);
+                    return;
+                }
+
+                var reader = _utilBanco.RecuperarColunasCabecalhoDaGrid(_conn, query);
+
+                var colunas = new DataGridViewColumn[reader.FieldCount];
+                while (reader.Read())
+                {
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        colunas[i] = new DataGridViewTextBoxColumn();
+                        colunas[i].HeaderText = reader.GetName(i);
+                    }
+                    break;
+                }
+                var command = new OracleCommand(query, _conn);
+                reader = command.ExecuteReader();
+
+                _utilGrid.LimparGrid(txtGrid);
+                _utilGrid.AdicionarColunaCabecalho(txtGrid, colunas);
+                _utilGrid.AdicionarLinhasNaGrid(txtGrid, qtdeLinhas);
+                _utilGrid.AdicionarDadosNaGrid(txtGrid, reader);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void ExecutarComando(string comando)
+        {
+            try
+            {
+                var command = new OracleCommand(comando, _conn);
+                command.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCommit_Click(object sender, EventArgs e)
+        {
+            _utilBanco.Commit(_conn);
+        }
+
+        private void btnRollback_Click(object sender, EventArgs e)
+        {
+            _utilBanco.Rollback(_conn);
+        }
     }
 }
