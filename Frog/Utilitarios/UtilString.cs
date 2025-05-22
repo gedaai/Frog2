@@ -11,6 +11,12 @@ namespace Frog.Utilitarios
     {
         public string RecuperarBlocoTextoDoCursor(TextBox txtArea)
         {
+            var textoSelecionado = txtArea.SelectedText;
+            if (!string.IsNullOrEmpty(textoSelecionado))
+            {
+                return textoSelecionado;
+            }
+
             // Pega todas as linhas do TextBox
             var lines = txtArea.Lines;
             int cursorIndex = txtArea.SelectionStart;

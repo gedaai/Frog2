@@ -32,7 +32,6 @@ namespace Frog
             }
 
             _conn = new OracleConnection(stringConexao);
-            _utilBanco = new UtilBanco();
 
             try
             {
@@ -81,6 +80,12 @@ namespace Frog
 
                 e.SuppressKeyPress = true;
             }
+            else if (e.KeyCode == Keys.F5)
+            {
+                btnExecutar_Click(sender, e);
+
+                e.SuppressKeyPress = true;
+            }
             else if (e.KeyCode == Keys.F4)
             {
                 var nome = _utilString.RecuperarPalavraDoCursor(txtArea);
@@ -119,6 +124,9 @@ namespace Frog
                 var command = new OracleCommand(query, _conn);
                 reader = command.ExecuteReader();
 
+                if(tabResultados.SelectedIndex != 0)
+                    tabResultados.SelectTab(0);
+
                 _utilGrid.LimparGrid(txtGrid);
                 _utilGrid.AdicionarColunaCabecalho(txtGrid, colunas);
                 _utilGrid.AdicionarLinhasNaGrid(txtGrid, qtdeLinhas);
@@ -135,7 +143,24 @@ namespace Frog
             try
             {
                 var command = new OracleCommand(comando, _conn);
-                command.ExecuteReader();
+                var exec = command.ExecuteReader();
+
+                var linhasAfetadas = exec.RecordsAffected;
+                var texto = string.Empty;
+
+                if (tabResultados.SelectedIndex != 1)
+                    tabResultados.SelectTab(1);
+
+                if (linhasAfetadas > 0)
+                {
+                    texto = "Linhas afetadas: " + linhasAfetadas;
+                }
+                else
+                {
+                    texto = "Procedimento realizado com sucesso";
+                }
+
+                RegistrarLog(texto);
             }
             catch (Exception ex)
             {
@@ -146,11 +171,23 @@ namespace Frog
         private void btnCommit_Click(object sender, EventArgs e)
         {
             _utilBanco.Commit(_conn);
+            RegistrarLog("Commit");
         }
 
         private void btnRollback_Click(object sender, EventArgs e)
         {
             _utilBanco.Rollback(_conn);
+            RegistrarLog("Rollback");
+        }
+
+        private void RegistrarLog(string texto)
+        {
+            if (!string.IsNullOrEmpty(txtLog.Text))
+            {
+                txtLog.Text += Environment.NewLine;
+            }
+
+            txtLog.Text += DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss") + "      " + texto + ".";
         }
     }
 }
