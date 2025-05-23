@@ -17,8 +17,6 @@ namespace Frog
         string _nomeObjeto = string.Empty;
         string _type = string.Empty;
         OracleConnection _conn;
-        UtilBanco _utilBanco;
-        UtilString _utilString;
 
         public WinObjetos(OracleConnection conn, string nomeObjeto, string type)
         {
@@ -50,13 +48,11 @@ namespace Frog
 
         public void CarregarSource()
         {
-            _utilBanco = new UtilBanco();
-            var source = _utilBanco.RecuperarSourceObjeto(_conn, _nomeObjeto, _type);
+            var source = _conn.RecuperarSourceObjeto(_nomeObjeto, _type);
 
             rtSource.Text = source;
 
-            _utilString = new UtilString();
-            _utilString.ColorirSQL(rtSource);
+            rtSource.ColorirSQL();
         }
     }
 }

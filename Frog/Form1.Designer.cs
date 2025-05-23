@@ -39,6 +39,7 @@
             btnRollback = new Button();
             tabResultados = new TabControl();
             tabPageDados = new TabPage();
+            lblConsultaQtde = new Label();
             tabPageResultados = new TabPage();
             txtLog = new TextBox();
             ((System.ComponentModel.ISupportInitialize)txtGrid).BeginInit();
@@ -50,7 +51,7 @@
             // btnExecutar
             // 
             btnExecutar.Enabled = false;
-            btnExecutar.Location = new Point(14, 443);
+            btnExecutar.Location = new Point(14, 535);
             btnExecutar.Name = "btnExecutar";
             btnExecutar.Size = new Size(88, 23);
             btnExecutar.TabIndex = 1;
@@ -62,13 +63,13 @@
             // 
             txtConexaoBanco.Location = new Point(12, 13);
             txtConexaoBanco.Name = "txtConexaoBanco";
-            txtConexaoBanco.Size = new Size(403, 23);
+            txtConexaoBanco.Size = new Size(469, 23);
             txtConexaoBanco.TabIndex = 2;
             txtConexaoBanco.Text = "User Id=e2desenv;Password=usetudo;Data Source=192.168.0.2:1521/desenve2";
             // 
             // btnConectar
             // 
-            btnConectar.Location = new Point(421, 12);
+            btnConectar.Location = new Point(487, 12);
             btnConectar.Name = "btnConectar";
             btnConectar.Size = new Size(75, 23);
             btnConectar.TabIndex = 3;
@@ -80,15 +81,15 @@
             // 
             txtGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             txtGrid.EditMode = DataGridViewEditMode.EditOnF2;
-            txtGrid.Location = new Point(3, 6);
+            txtGrid.Location = new Point(0, 0);
             txtGrid.Name = "txtGrid";
-            txtGrid.Size = new Size(558, 154);
+            txtGrid.Size = new Size(645, 191);
             txtGrid.TabIndex = 4;
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Location = new Point(503, 15);
+            lblStatus.Location = new Point(569, 15);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(88, 15);
             lblStatus.TabIndex = 5;
@@ -101,7 +102,7 @@
             txtArea.Multiline = true;
             txtArea.Name = "txtArea";
             txtArea.ScrollBars = ScrollBars.Both;
-            txtArea.Size = new Size(577, 179);
+            txtArea.Size = new Size(647, 240);
             txtArea.TabIndex = 6;
             txtArea.Text = resources.GetString("txtArea.Text");
             txtArea.WordWrap = false;
@@ -109,7 +110,7 @@
             // 
             // btnCommit
             // 
-            btnCommit.Location = new Point(104, 443);
+            btnCommit.Location = new Point(104, 535);
             btnCommit.Name = "btnCommit";
             btnCommit.Size = new Size(75, 23);
             btnCommit.TabIndex = 7;
@@ -119,7 +120,7 @@
             // 
             // btnRollback
             // 
-            btnRollback.Location = new Point(182, 443);
+            btnRollback.Location = new Point(182, 535);
             btnRollback.Name = "btnRollback";
             btnRollback.Size = new Size(75, 23);
             btnRollback.TabIndex = 8;
@@ -131,22 +132,32 @@
             // 
             tabResultados.Controls.Add(tabPageDados);
             tabResultados.Controls.Add(tabPageResultados);
-            tabResultados.Location = new Point(14, 231);
+            tabResultados.Location = new Point(14, 292);
             tabResultados.Name = "tabResultados";
             tabResultados.SelectedIndex = 0;
-            tabResultados.Size = new Size(575, 206);
+            tabResultados.Size = new Size(649, 237);
             tabResultados.TabIndex = 9;
             // 
             // tabPageDados
             // 
+            tabPageDados.Controls.Add(lblConsultaQtde);
             tabPageDados.Controls.Add(txtGrid);
             tabPageDados.Location = new Point(4, 24);
             tabPageDados.Name = "tabPageDados";
             tabPageDados.Padding = new Padding(3);
-            tabPageDados.Size = new Size(567, 178);
+            tabPageDados.Size = new Size(641, 209);
             tabPageDados.TabIndex = 0;
             tabPageDados.Text = "Dados";
             tabPageDados.UseVisualStyleBackColor = true;
+            // 
+            // lblConsultaQtde
+            // 
+            lblConsultaQtde.AutoSize = true;
+            lblConsultaQtde.Font = new Font("Segoe UI", 8F);
+            lblConsultaQtde.Location = new Point(0, 194);
+            lblConsultaQtde.Name = "lblConsultaQtde";
+            lblConsultaQtde.Size = new Size(63, 13);
+            lblConsultaQtde.TabIndex = 5;
             // 
             // tabPageResultados
             // 
@@ -154,25 +165,26 @@
             tabPageResultados.Location = new Point(4, 24);
             tabPageResultados.Name = "tabPageResultados";
             tabPageResultados.Padding = new Padding(3);
-            tabPageResultados.Size = new Size(567, 178);
+            tabPageResultados.Size = new Size(641, 209);
             tabPageResultados.TabIndex = 1;
             tabPageResultados.Text = "Resultados";
             tabPageResultados.UseVisualStyleBackColor = true;
             // 
             // txtLog
             // 
-            txtLog.Location = new Point(3, 5);
+            txtLog.Location = new Point(0, 0);
             txtLog.Multiline = true;
             txtLog.Name = "txtLog";
             txtLog.ReadOnly = true;
-            txtLog.Size = new Size(558, 167);
+            txtLog.ScrollBars = ScrollBars.Both;
+            txtLog.Size = new Size(641, 209);
             txtLog.TabIndex = 0;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(601, 473);
+            ClientSize = new Size(666, 564);
             Controls.Add(tabResultados);
             Controls.Add(btnRollback);
             Controls.Add(btnCommit);
@@ -186,6 +198,7 @@
             ((System.ComponentModel.ISupportInitialize)txtGrid).EndInit();
             tabResultados.ResumeLayout(false);
             tabPageDados.ResumeLayout(false);
+            tabPageDados.PerformLayout();
             tabPageResultados.ResumeLayout(false);
             tabPageResultados.PerformLayout();
             ResumeLayout(false);
@@ -205,5 +218,6 @@
         private TabPage tabPageDados;
         private TabPage tabPageResultados;
         private TextBox txtLog;
+        private Label lblConsultaQtde;
     }
 }

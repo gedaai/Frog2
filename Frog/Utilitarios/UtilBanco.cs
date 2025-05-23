@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Frog.Utilitarios
 {
-    public class UtilBanco
+    public static class UtilBanco
     {
-        public void AbrirConexaoComBancoDeDados(OracleConnection conn)
+        public static void AbrirConexaoComBancoDeDados(this OracleConnection conn)
         {
             FecharConexaoComBancoDeDados(conn);
 
@@ -22,7 +22,7 @@ namespace Frog.Utilitarios
             }
         }
 
-        public void FecharConexaoComBancoDeDados(OracleConnection conn)
+        public static void FecharConexaoComBancoDeDados(this OracleConnection conn)
         {
             if (conn == null)
                 return;
@@ -33,17 +33,17 @@ namespace Frog.Utilitarios
             }
         }
 
-        public void Commit(OracleConnection conn)
+        public static void Commit(this OracleConnection conn)
         {
             conn.Commit();
         }
 
-        public void Rollback(OracleConnection conn)
+        public static void Rollback(this OracleConnection conn)
         {
             conn.Rollback();
         }
 
-        public int RecuperarQuantidadeRegistrosDaQuery(OracleConnection conn, string query)
+        public static int RecuperarQuantidadeRegistrosDaQuery(this OracleConnection conn, string query)
         {
             var queryQuantidade = $"select count(*) from ( {query} )";
 
@@ -55,7 +55,7 @@ namespace Frog.Utilitarios
             return Convert.ToInt32(reader.GetValue(0));
         }
 
-        public OracleDataReader RecuperarColunasCabecalhoDaGrid(OracleConnection conn, string query)
+        public static OracleDataReader RecuperarColunasCabecalhoDaGrid(this OracleConnection conn, string query)
         {
             var queryQuantidade = $"select * from ( {query} ) where rownum = 1";
 
@@ -63,7 +63,7 @@ namespace Frog.Utilitarios
             return command.ExecuteReader();
         }
 
-        public void IdentificaTipoObjeto(OracleConnection conn, string nome)
+        public static void IdentificaTipoObjeto(this OracleConnection conn, string nome)
         {
             var query = $@"SELECT object_type
                             FROM user_objects
@@ -97,7 +97,7 @@ namespace Frog.Utilitarios
             }            
         }
 
-        public string RecuperarSourceObjeto(OracleConnection conn, string nome, string tipo)
+        public static string RecuperarSourceObjeto(this OracleConnection conn, string nome, string tipo)
         {
             var query = $@"select text
                              from user_SOURCE 

@@ -9,16 +9,10 @@ namespace Frog
     public partial class Form1 : Form
     {
         OracleConnection _conn = null;
-        UtilBanco _utilBanco;
-        UtilString _utilString;
-        UtilGrid _utilGrid;
 
         public Form1()
         {
             InitializeComponent();
-            _utilGrid = new UtilGrid();
-            _utilString = new UtilString();
-            _utilBanco = new UtilBanco();
         }
 
         private void btnConectar_Click(object sender, EventArgs e)
@@ -35,7 +29,7 @@ namespace Frog
 
             try
             {
-                _utilBanco.AbrirConexaoComBancoDeDados(_conn);
+                _conn.AbrirConexaoComBancoDeDados();
             }
             catch (Exception ex)
             {
@@ -52,7 +46,7 @@ namespace Frog
 
         private void btnExecutar_Click(object sender, EventArgs e)
         {
-            var consulta = _utilString.RecuperarBlocoTextoDoCursor(txtArea);
+            var consulta = txtArea.RecuperarBlocoTextoDoCursor();
 
             if (String.IsNullOrEmpty(consulta)) return;
 
@@ -88,8 +82,8 @@ namespace Frog
             }
             else if (e.KeyCode == Keys.F4)
             {
-                var nome = _utilString.RecuperarPalavraDoCursor(txtArea);
-                _utilBanco.IdentificaTipoObjeto(_conn, nome);
+                var nome = txtArea.RecuperarPalavraDoCursor();
+                _conn.IdentificaTipoObjeto(nome);
 
                 e.SuppressKeyPress = true;
             }
@@ -101,15 +95,15 @@ namespace Frog
             {
                 var query = comando;
 
-                var qtdeLinhas = _utilBanco.RecuperarQuantidadeRegistrosDaQuery(_conn, query);
+                var qtdeLinhas = _conn.RecuperarQuantidadeRegistrosDaQuery(query);
 
                 if (qtdeLinhas <= 0)
                 {
-                    _utilGrid.LimparGrid(txtGrid);
+                    txtGrid.LimparGrid();
                     return;
                 }
 
-                var reader = _utilBanco.RecuperarColunasCabecalhoDaGrid(_conn, query);
+                var reader = _conn.RecuperarColunasCabecalhoDaGrid(query);
 
                 var colunas = new DataGridViewColumn[reader.FieldCount];
                 while (reader.Read())
@@ -127,10 +121,12 @@ namespace Frog
                 if(tabResultados.SelectedIndex != 0)
                     tabResultados.SelectTab(0);
 
-                _utilGrid.LimparGrid(txtGrid);
-                _utilGrid.AdicionarColunaCabecalho(txtGrid, colunas);
-                _utilGrid.AdicionarLinhasNaGrid(txtGrid, qtdeLinhas);
-                _utilGrid.AdicionarDadosNaGrid(txtGrid, reader);
+                txtGrid.LimparGrid();
+                txtGrid.AdicionarColunaCabecalho(colunas);
+                txtGrid.AdicionarLinhasNaGrid(qtdeLinhas);
+                txtGrid.AdicionarDadosNaGrid(reader);
+
+                lblConsultaQtde.Text = $"Quantidade de registros {qtdeLinhas}.";
             }
             catch (Exception ex)
             {
@@ -147,9 +143,6 @@ namespace Frog
 
                 var linhasAfetadas = exec.RecordsAffected;
                 var texto = string.Empty;
-
-                if (tabResultados.SelectedIndex != 1)
-                    tabResultados.SelectTab(1);
 
                 if (linhasAfetadas > 0)
                 {
@@ -170,13 +163,13 @@ namespace Frog
 
         private void btnCommit_Click(object sender, EventArgs e)
         {
-            _utilBanco.Commit(_conn);
+            _conn.Commit();
             RegistrarLog("Commit");
         }
 
         private void btnRollback_Click(object sender, EventArgs e)
         {
-            _utilBanco.Rollback(_conn);
+            _conn.Rollback();
             RegistrarLog("Rollback");
         }
 
@@ -186,6 +179,9 @@ namespace Frog
             {
                 txtLog.Text += Environment.NewLine;
             }
+
+            if (tabResultados.SelectedIndex != 1)
+                tabResultados.SelectTab(1);
 
             txtLog.Text += DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss") + "      " + texto + ".";
         }

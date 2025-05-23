@@ -7,26 +7,26 @@ using System.Threading.Tasks;
 
 namespace Frog.Utilitarios
 {
-    public class UtilGrid
+    public static class UtilGrid
     {
-        public void LimparGrid(DataGridView dataGrid)
+        public static void LimparGrid(this DataGridView dataGrid)
         {
             dataGrid.Rows.Clear();
             dataGrid.Columns.Clear();
         }
 
-        public void AdicionarColunaCabecalho(DataGridView dataGrid, DataGridViewColumn[] colunas)
+        public static void AdicionarColunaCabecalho(this DataGridView dataGrid, DataGridViewColumn[] colunas)
         {
             dataGrid.Columns.AddRange(colunas);
         }
 
-        public void AdicionarLinhasNaGrid(DataGridView dataGrid, int qtdeLinhas)
+        public static void AdicionarLinhasNaGrid(this DataGridView dataGrid, int qtdeLinhas)
         {
             if (qtdeLinhas > 1)
                 dataGrid.Rows.Add(qtdeLinhas - 1);
         }
 
-        public void AdicionarDadosNaGrid(DataGridView dataGrid, OracleDataReader reader)
+        public static void AdicionarDadosNaGrid(this DataGridView dataGrid, OracleDataReader reader)
         {
             var linha = 0;
 

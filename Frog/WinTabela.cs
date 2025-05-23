@@ -19,9 +19,6 @@ namespace Frog
         string _type = string.Empty;
 
         OracleConnection _conn;
-        UtilBanco _utilBanco;
-        UtilString _utilString;
-        UtilGrid _utilGrid;
 
         public WinTabela(OracleConnection conn, string nomeTabela)
         {
@@ -32,10 +29,6 @@ namespace Frog
 
         private void WinTabela_Load(object sender, EventArgs e)
         {
-            _utilGrid = new UtilGrid();
-            _utilString = new UtilString();
-            _utilBanco = new UtilBanco();
-
             var query = $@" select column_id, 
                                    column_name, 
                                    Case data_type
@@ -49,9 +42,9 @@ namespace Frog
                              where table_name = '{_nomeTabela.ToUpper().Trim()}' 
                              order by column_id  "; 
 
-            var qtdeLinhas = _utilBanco.RecuperarQuantidadeRegistrosDaQuery(_conn, query);
+            var qtdeLinhas = _conn.RecuperarQuantidadeRegistrosDaQuery(query);
 
-            var reader = _utilBanco.RecuperarColunasCabecalhoDaGrid(_conn, query);
+            var reader = _conn.RecuperarColunasCabecalhoDaGrid(query);
 
             var colunas = new DataGridViewColumn[reader.FieldCount];
             while (reader.Read())
@@ -66,10 +59,10 @@ namespace Frog
             var command = new OracleCommand(query, _conn);
             reader = command.ExecuteReader();
 
-            _utilGrid.LimparGrid(dgTabela);
-            _utilGrid.AdicionarColunaCabecalho(dgTabela, colunas);
-            _utilGrid.AdicionarLinhasNaGrid(dgTabela, qtdeLinhas);
-            _utilGrid.AdicionarDadosNaGrid(dgTabela, reader);
+            dgTabela.LimparGrid();
+            dgTabela.AdicionarColunaCabecalho(colunas);
+            dgTabela.AdicionarLinhasNaGrid(qtdeLinhas);
+            dgTabela.AdicionarDadosNaGrid(reader);
         }
     }
 }

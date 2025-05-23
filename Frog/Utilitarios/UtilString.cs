@@ -7,9 +7,9 @@ using static System.Windows.Forms.MonthCalendar;
 
 namespace Frog.Utilitarios
 {
-    public class UtilString
+    public static class UtilString
     {
-        public string RecuperarBlocoTextoDoCursor(TextBox txtArea)
+        public static string RecuperarBlocoTextoDoCursor(this TextBox txtArea)
         {
             var textoSelecionado = txtArea.SelectedText;
             if (!string.IsNullOrEmpty(textoSelecionado))
@@ -45,7 +45,7 @@ namespace Frog.Utilitarios
             return string.Join(Environment.NewLine, blockLines);
         }
 
-        public string RecuperarPalavraDoCursor(TextBox txtArea)
+        public static string RecuperarPalavraDoCursor(this TextBox txtArea)
         {
             int startIndex = txtArea.SelectionStart;
             string texto = txtArea.Text;
@@ -65,7 +65,7 @@ namespace Frog.Utilitarios
             return texto.Substring(inicioPalavra, fimPalavra - inicioPalavra);
         }
 
-        public void ColorirSQL(RichTextBox richTextBox)
+        public static void ColorirSQL(this RichTextBox richTextBox)
         {
             string[] palavrasReservadas = { "ACCESS","ADD","ALL","ALTER","AND","ANY","AS","ASC","AUDIT","BETWEEN","BY","CHAR","CHECK","CLUSTER","COLUMN",
                                             "COMMENT","COMPRESS","CONNECT","CREATE","CURRENT","DATE","DECIMAL","DEFAULT","DELETE","DESC","DISTINCT","DROP",
