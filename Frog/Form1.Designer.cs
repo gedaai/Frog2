@@ -42,6 +42,8 @@
             lblConsultaQtde = new Label();
             tabPageResultados = new TabPage();
             txtLog = new TextBox();
+            panel1 = new Panel();
+            panelMenu = new Panel();
             ((System.ComponentModel.ISupportInitialize)txtGrid).BeginInit();
             tabResultados.SuspendLayout();
             tabPageDados.SuspendLayout();
@@ -61,7 +63,7 @@
             // 
             // txtConexaoBanco
             // 
-            txtConexaoBanco.Location = new Point(12, 13);
+            txtConexaoBanco.Location = new Point(12, 8);
             txtConexaoBanco.Name = "txtConexaoBanco";
             txtConexaoBanco.Size = new Size(469, 23);
             txtConexaoBanco.TabIndex = 2;
@@ -69,7 +71,7 @@
             // 
             // btnConectar
             // 
-            btnConectar.Location = new Point(487, 12);
+            btnConectar.Location = new Point(487, 7);
             btnConectar.Name = "btnConectar";
             btnConectar.Size = new Size(75, 23);
             btnConectar.TabIndex = 3;
@@ -83,13 +85,13 @@
             txtGrid.EditMode = DataGridViewEditMode.EditOnF2;
             txtGrid.Location = new Point(0, 0);
             txtGrid.Name = "txtGrid";
-            txtGrid.Size = new Size(645, 191);
+            txtGrid.Size = new Size(235, 213);
             txtGrid.TabIndex = 4;
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Location = new Point(569, 15);
+            lblStatus.Location = new Point(569, 10);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(88, 15);
             lblStatus.TabIndex = 5;
@@ -98,11 +100,11 @@
             // txtArea
             // 
             txtArea.Enabled = false;
-            txtArea.Location = new Point(12, 46);
+            txtArea.Location = new Point(694, 57);
             txtArea.Multiline = true;
             txtArea.Name = "txtArea";
             txtArea.ScrollBars = ScrollBars.Both;
-            txtArea.Size = new Size(647, 240);
+            txtArea.Size = new Size(167, 151);
             txtArea.TabIndex = 6;
             txtArea.Text = resources.GetString("txtArea.Text");
             txtArea.WordWrap = false;
@@ -132,10 +134,10 @@
             // 
             tabResultados.Controls.Add(tabPageDados);
             tabResultados.Controls.Add(tabPageResultados);
-            tabResultados.Location = new Point(14, 292);
+            tabResultados.Location = new Point(684, 214);
             tabResultados.Name = "tabResultados";
             tabResultados.SelectedIndex = 0;
-            tabResultados.Size = new Size(649, 237);
+            tabResultados.Size = new Size(243, 237);
             tabResultados.TabIndex = 9;
             // 
             // tabPageDados
@@ -145,7 +147,7 @@
             tabPageDados.Location = new Point(4, 24);
             tabPageDados.Name = "tabPageDados";
             tabPageDados.Padding = new Padding(3);
-            tabPageDados.Size = new Size(641, 209);
+            tabPageDados.Size = new Size(235, 209);
             tabPageDados.TabIndex = 0;
             tabPageDados.Text = "Dados";
             tabPageDados.UseVisualStyleBackColor = true;
@@ -156,7 +158,7 @@
             lblConsultaQtde.Font = new Font("Segoe UI", 8F);
             lblConsultaQtde.Location = new Point(0, 194);
             lblConsultaQtde.Name = "lblConsultaQtde";
-            lblConsultaQtde.Size = new Size(63, 13);
+            lblConsultaQtde.Size = new Size(0, 13);
             lblConsultaQtde.TabIndex = 5;
             // 
             // tabPageResultados
@@ -165,26 +167,43 @@
             tabPageResultados.Location = new Point(4, 24);
             tabPageResultados.Name = "tabPageResultados";
             tabPageResultados.Padding = new Padding(3);
-            tabPageResultados.Size = new Size(641, 209);
+            tabPageResultados.Size = new Size(235, 209);
             tabPageResultados.TabIndex = 1;
             tabPageResultados.Text = "Resultados";
             tabPageResultados.UseVisualStyleBackColor = true;
             // 
             // txtLog
             // 
-            txtLog.Location = new Point(0, 0);
+            txtLog.Location = new Point(0, 45);
             txtLog.Multiline = true;
             txtLog.Name = "txtLog";
             txtLog.ReadOnly = true;
             txtLog.ScrollBars = ScrollBars.Both;
-            txtLog.Size = new Size(641, 209);
+            txtLog.Size = new Size(641, 164);
             txtLog.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Location = new Point(12, 66);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(645, 463);
+            panel1.TabIndex = 10;
+            // 
+            // panelMenu
+            // 
+            panelMenu.Location = new Point(12, 37);
+            panelMenu.Name = "panelMenu";
+            panelMenu.Size = new Size(645, 23);
+            panelMenu.TabIndex = 11;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(666, 564);
+            ClientSize = new Size(665, 564);
+            Controls.Add(panelMenu);
+            Controls.Add(panel1);
             Controls.Add(tabResultados);
             Controls.Add(btnRollback);
             Controls.Add(btnCommit);
@@ -195,6 +214,7 @@
             Controls.Add(btnExecutar);
             Name = "Form1";
             Text = "Frog 1.1.1.0";
+            Resize += Form1_Resize;
             ((System.ComponentModel.ISupportInitialize)txtGrid).EndInit();
             tabResultados.ResumeLayout(false);
             tabPageDados.ResumeLayout(false);
@@ -219,5 +239,7 @@
         private TabPage tabPageResultados;
         private TextBox txtLog;
         private Label lblConsultaQtde;
+        private Panel panel1;
+        private Panel panelMenu;
     }
 }

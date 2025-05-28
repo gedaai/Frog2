@@ -1,58 +1,54 @@
-using Frog.Utilitarios;
+ï»¿using Frog.Utilitarios;
 using Oracle.ManagedDataAccess.Client;
 using System;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Frog
+namespace Frog.Componentes
 {
-    public partial class Form1 : Form
+    public partial class ComponenteAba : UserControl
     {
-        OracleConnection _conn = null;
+        OracleConnection _conn;
 
-        public Form1()
+        public ComponenteAba(OracleConnection conn)
         {
             InitializeComponent();
+            _conn = conn;
 
-            TamanhoTela();
+            splitContainer1.Dock = DockStyle.Fill;
+            txtArea.Dock = DockStyle.Fill;
+            tabResultados.Dock = DockStyle.Fill;    
+            tabPageDados.Dock = DockStyle.Fill;
+            tabPageResultados.Dock = DockStyle.Fill;
+            txtGrid.Dock = DockStyle.Fill;
+            txtLog.Dock = DockStyle.Fill;
         }
 
-        private void btnConectar_Click(object sender, EventArgs e)
+        private void txtArea_KeyDown(object sender, KeyEventArgs e)
         {
-            var stringConexao = txtConexaoBanco.Text;
-
-            if (String.IsNullOrEmpty(stringConexao))
+            if (e.KeyCode == Keys.F9 || e.KeyCode == Keys.F5)
             {
-                MessageBox.Show("String de conexão não informada.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                Executar();
+
+                e.SuppressKeyPress = true;
             }
-
-            _conn = new OracleConnection(stringConexao);
-
-            try
+            else if (e.KeyCode == Keys.F4)
             {
-                _conn.AbrirConexaoComBancoDeDados();
+                var nome = txtArea.RecuperarPalavraDoCursor();
+                _conn.IdentificaTipoObjeto(nome);
+
+                e.SuppressKeyPress = true;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao realizar conexão com o banco. {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                lblStatus.Text = "Não conectado";
-                btnExecutar.Enabled = false;
-                return;
-            }
-
-            lblStatus.Text = "Conectado";
-            btnExecutar.Enabled = true;
-            txtArea.Enabled = true;
-
-            var formComTabs = new ComponenteTab(_conn);
-            formComTabs.Dock = DockStyle.Fill;
-
-            panel1.Controls.Add(formComTabs);
-            formComTabs.Show();
         }
 
-        private void btnExecutar_Click(object sender, EventArgs e)
+        private void Executar()
         {
             var consulta = txtArea.RecuperarBlocoTextoDoCursor();
 
@@ -60,7 +56,7 @@ namespace Frog
 
             if (_conn == null)
             {
-                MessageBox.Show("Não conectado ao banco de dados", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("NÃ£o conectado ao banco de dados", "AtenÃ§Ã£o", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -71,29 +67,6 @@ namespace Frog
             else
             {
                 ExecutarComando(consulta);
-            }
-        }
-
-        private void txtArea_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F9)
-            {
-                btnExecutar_Click(sender, e);
-
-                e.SuppressKeyPress = true;
-            }
-            else if (e.KeyCode == Keys.F5)
-            {
-                btnExecutar_Click(sender, e);
-
-                e.SuppressKeyPress = true;
-            }
-            else if (e.KeyCode == Keys.F4)
-            {
-                var nome = txtArea.RecuperarPalavraDoCursor();
-                _conn.IdentificaTipoObjeto(nome);
-
-                e.SuppressKeyPress = true;
             }
         }
 
@@ -134,7 +107,7 @@ namespace Frog
                 txtGrid.AdicionarLinhasNaGrid(qtdeLinhas);
                 txtGrid.AdicionarDadosNaGrid(reader);
 
-                lblConsultaQtde.Text = $"Quantidade de registros {qtdeLinhas}.";
+                //lblConsultaQtde.Text = $"Quantidade de registros {qtdeLinhas}.";
             }
             catch (Exception ex)
             {
@@ -169,43 +142,17 @@ namespace Frog
             }
         }
 
-        private void btnCommit_Click(object sender, EventArgs e)
-        {
-            _conn.Commit();
-            RegistrarLog("Commit");
-        }
-
-        private void btnRollback_Click(object sender, EventArgs e)
-        {
-            _conn.Rollback();
-            RegistrarLog("Rollback");
-        }
-
         private void RegistrarLog(string texto)
         {
             if (!string.IsNullOrEmpty(txtLog.Text))
             {
                 txtLog.Text += Environment.NewLine;
             }
-
+            
             if (tabResultados.SelectedIndex != 1)
                 tabResultados.SelectTab(1);
 
             txtLog.Text += DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss") + "      " + texto + ".";
-        }
-
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            TamanhoTela();
-        }
-
-        private void TamanhoTela()
-        {
-            int windowWidth = this.ClientSize.Width;
-            int windowHeight = this.ClientSize.Height;
-
-            panel1.Width = (int)(windowWidth - 22);
-            panel1.Height = (int)(windowHeight - 90);
         }
     }
 }

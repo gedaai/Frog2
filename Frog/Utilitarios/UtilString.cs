@@ -65,6 +65,25 @@ namespace Frog.Utilitarios
             return texto.Substring(inicioPalavra, fimPalavra - inicioPalavra);
         }
 
+        public static void IrParaLinha(this TextBox txtArea, int numeroDaLinha)
+        {            
+            int indice = 0;
+            string texto = txtArea.Text;
+            string[] linhas = texto.Split('\n');
+
+            numeroDaLinha--;
+
+            if (numeroDaLinha >= 0 && numeroDaLinha < linhas.Length)
+            {
+                for (int i = 0; i < numeroDaLinha; i++)
+                {
+                    indice += linhas[i].Length + 1;
+                }
+                txtArea.Focus();
+                txtArea.Select(indice, linhas[numeroDaLinha].Length);
+            }
+        }
+
         public static void ColorirSQL(this RichTextBox richTextBox)
         {
             string[] palavrasReservadas = { "ACCESS","ADD","ALL","ALTER","AND","ANY","AS","ASC","AUDIT","BETWEEN","BY","CHAR","CHECK","CLUSTER","COLUMN",
