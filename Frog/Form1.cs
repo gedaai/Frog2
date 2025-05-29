@@ -1,3 +1,4 @@
+using Frog.Componentes;
 using Frog.Utilitarios;
 using Oracle.ManagedDataAccess.Client;
 using System;
@@ -13,6 +14,12 @@ namespace Frog
         public Form1()
         {
             InitializeComponent();
+
+            var barraMenu = new ComponenteBarraMenus();
+           // barraMenu.Dock = DockStyle.Fill;
+
+            panelMenu.Controls.Add(barraMenu);
+            barraMenu.Show();
 
             TamanhoTela();
         }

@@ -194,7 +194,7 @@
             // 
             panelMenu.Location = new Point(12, 37);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(645, 23);
+            panelMenu.Size = new Size(645, 25);
             panelMenu.TabIndex = 11;
             // 
             // Form1

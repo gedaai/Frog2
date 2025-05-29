@@ -25,9 +25,24 @@ namespace Frog
             InitializeComponent();
             _nomeTabela = nomeTabela;
             _conn = conn;
+
+            panel1.Dock = DockStyle.Fill;
+            tabControlPrincipal.Dock = DockStyle.Fill;
+            splitContainerTriggers.Dock = DockStyle.Fill;
+            dataGridTriggers.Dock = DockStyle.Fill;
+            txtTriggerSource.Dock = DockStyle.Fill;
+            dgTabela.Dock = DockStyle.Fill;
+
+            TamanhoTela();
         }
 
         private void WinTabela_Load(object sender, EventArgs e)
+        {
+            CarregarDadosColunas();
+            CarregarDadosTriggers();
+        }
+
+        private void CarregarDadosColunas()
         {
             var query = $@" select column_id, 
                                    column_name, 
@@ -40,7 +55,7 @@ namespace Frog
                                    nullable 
                               from USER_TAB_COLUMNS
                              where table_name = '{_nomeTabela.ToUpper().Trim()}' 
-                             order by column_id  "; 
+                             order by column_id  ";
 
             var qtdeLinhas = _conn.RecuperarQuantidadeRegistrosDaQuery(query);
 
@@ -63,6 +78,62 @@ namespace Frog
             dgTabela.AdicionarColunaCabecalho(colunas);
             dgTabela.AdicionarLinhasNaGrid(qtdeLinhas);
             dgTabela.AdicionarDadosNaGrid(reader);
+        }
+
+        private void CarregarDadosTriggers()
+        {
+            var query = $@" select trigger_name as Name, trigger_type as type, status as enabled, triggering_event as event
+                              from user_triggers
+                            where table_name = '{_nomeTabela.ToUpper().Trim()}' ";
+
+            var qtdeLinhas = _conn.RecuperarQuantidadeRegistrosDaQuery(query);
+
+            var reader = _conn.RecuperarColunasCabecalhoDaGrid(query);
+
+            var colunas = new DataGridViewColumn[reader.FieldCount];
+            while (reader.Read())
+            {
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    colunas[i] = new DataGridViewTextBoxColumn();
+                    colunas[i].HeaderText = reader.GetName(i);
+                }
+                break;
+            }
+            var command = new OracleCommand(query, _conn);
+            reader = command.ExecuteReader();
+
+            dataGridTriggers.LimparGrid();
+            dataGridTriggers.AdicionarColunaCabecalho(colunas);
+            dataGridTriggers.AdicionarLinhasNaGrid(qtdeLinhas);
+            dataGridTriggers.AdicionarDadosNaGrid(reader);
+        }
+
+        private void TamanhoTela()
+        {
+            int windowWidth = this.ClientSize.Width;
+            int windowHeight = this.ClientSize.Height;
+
+            panel1.Width = (int)(windowWidth - 22);
+            panel1.Height = (int)(windowHeight - 90);
+        }
+
+        private void WinTabela_Resize(object sender, EventArgs e)
+        {
+            TamanhoTela();
+        }
+
+        private void dataGridTriggers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+
+            var linha = dataGridTriggers.Rows[e.RowIndex];
+
+            var valor = linha.Cells[0].Value.ToString();
+
+            var source = _conn.RecuperarSourceObjeto(valor, "TRIGGER");
+
+            txtTriggerSource.Text = source;
         }
     }
 }

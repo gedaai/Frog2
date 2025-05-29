@@ -86,6 +86,9 @@ namespace Frog.Utilitarios
 
         public static void ColorirSQL(this RichTextBox richTextBox)
         {
+            //Deixa muito lento
+            return;
+
             string[] palavrasReservadas = { "ACCESS","ADD","ALL","ALTER","AND","ANY","AS","ASC","AUDIT","BETWEEN","BY","CHAR","CHECK","CLUSTER","COLUMN",
                                             "COMMENT","COMPRESS","CONNECT","CREATE","CURRENT","DATE","DECIMAL","DEFAULT","DELETE","DESC","DISTINCT","DROP",
                                             "ELSE","EXCLUSIVE","EXISTS","FILE","FLOAT","FOR","FROM","GRANT","GROUP","HAVING","IDENTIFIED","IMMEDIATE","IN",

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Frog.Componentes
 {
@@ -44,6 +45,16 @@ namespace Frog.Componentes
                 var nome = txtArea.RecuperarPalavraDoCursor();
                 _conn.IdentificaTipoObjeto(nome);
 
+                e.SuppressKeyPress = true;
+            }
+            else if (e.KeyCode == Keys.Tab)
+            {
+                int selectionStart = txtArea.SelectionStart;
+
+                txtArea.Text = txtArea.Text.Insert(selectionStart, "    ");
+                txtArea.SelectionStart = selectionStart + 4;
+
+                e.Handled = true;
                 e.SuppressKeyPress = true;
             }
         }

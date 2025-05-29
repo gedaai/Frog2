@@ -65,6 +65,8 @@
             // 
             // txtArea
             // 
+            txtArea.AcceptsTab = true;
+            txtArea.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtArea.Location = new Point(3, 3);
             txtArea.Multiline = true;
             txtArea.Name = "txtArea";
