@@ -76,6 +76,8 @@ namespace Frog
 
             var qtdeLinhas = UtilBanco.RecuperarQuantidadeRegistrosDaQuery(query);
 
+            if (qtdeLinhas <= 0) return;
+
             var reader = UtilBanco.RecuperarColunasCabecalhoDaGrid(query);
 
             var colunas = new DataGridViewColumn[reader.FieldCount];
@@ -92,7 +94,7 @@ namespace Frog
             reader = command.ExecuteReader();
 
             dataGridErros.LimparGrid();
-            dataGridErros.AdicionarColunaCabecalho(colunas);
+            dataGridErros.AdicionarColunaCabecalho(colunas);            
             dataGridErros.AdicionarLinhasNaGrid(qtdeLinhas);
             dataGridErros.AdicionarDadosNaGrid(reader);
         }

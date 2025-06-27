@@ -1,24 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\desenvolvimento\\Particular\\Frog2\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|c:\\desenvolvimento\\particular\\frog2\\frog\\forms\\winobjetos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\forms\\winobjetos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|c:\\desenvolvimento\\particular\\frog2\\frog\\forms\\wintabela.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\forms\\wintabela.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|C:\\desenvolvimento\\Particular\\Frog2\\frog\\forms\\winobjetos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\forms\\winobjetos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|c:\\desenvolvimento\\particular\\frog2\\frog\\forms\\wintabela.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\forms\\wintabela.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -26,61 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "WinTabela.cs",
-              "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Forms\\WinTabela.cs",
-              "RelativeDocumentMoniker": "Frog\\Forms\\WinTabela.cs",
-              "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Forms\\WinTabela.cs",
-              "RelativeToolTip": "Frog\\Forms\\WinTabela.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACEAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T18:51:20.878Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WinTabela.cs [Design]",
-              "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Forms\\WinTabela.cs",
-              "RelativeDocumentMoniker": "Frog\\Forms\\WinTabela.cs",
-              "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Forms\\WinTabela.cs [Design]",
-              "RelativeToolTip": "Frog\\Forms\\WinTabela.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T18:51:11.211Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WinObjetos.cs",
-              "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Forms\\WinObjetos.cs",
-              "RelativeDocumentMoniker": "Frog\\Forms\\WinObjetos.cs",
-              "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Forms\\WinObjetos.cs*",
-              "RelativeToolTip": "Frog\\Forms\\WinObjetos.cs*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T18:44:45.591Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WinObjetos.cs [Design]",
-              "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Forms\\WinObjetos.cs",
-              "RelativeDocumentMoniker": "Frog\\Forms\\WinObjetos.cs",
-              "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Forms\\WinObjetos.cs [Design]*",
-              "RelativeToolTip": "Frog\\Forms\\WinObjetos.cs [Design]*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T18:44:40.364Z",
-              "EditorCaption": " [Design]"
             }
           ]
         }
