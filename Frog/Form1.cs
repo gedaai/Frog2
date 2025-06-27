@@ -14,7 +14,6 @@ namespace Frog
 {
     public partial class Form1 : Form
     {
-        OracleConnection _conn = null;
         private IConfiguration _configuration;
         private List<ConexoesBanco> conexoes = new List<ConexoesBanco>();
 
@@ -35,10 +34,11 @@ namespace Frog
         {
             if (btnConectar.Text == "Desconectar")
             {
-                _conn.FecharConexaoComBancoDeDados();
-                _conn = null;
+                UtilBanco.FecharConexaoComBancoDeDados();
+                UtilBanco._conn = null;
                 lblStatus.Text = "Não conectado";
                 btnConectar.Text = "Conectar";
+                comboConexoes.Enabled = true;
                 txtConexaoBanco.Enabled = true;
                 return;
             }
@@ -51,11 +51,11 @@ namespace Frog
                 return;
             }
 
-            _conn = new OracleConnection(stringConexao);
+            UtilBanco._conn = new OracleConnection(stringConexao);
 
             try
             {
-                _conn.AbrirConexaoComBancoDeDados();
+                UtilBanco.AbrirConexaoComBancoDeDados();
             }
             catch (Exception ex)
             {
@@ -68,8 +68,9 @@ namespace Frog
             lblStatus.Text = "Conectado";
             btnConectar.Text = "Desconectar";
             txtConexaoBanco.Enabled = false;
+            comboConexoes.Enabled = false;
 
-            var formComTabs = new ComponenteTab(_conn);
+            var formComTabs = new ComponenteTab();
             formComTabs.Dock = DockStyle.Fill;
 
             panel1.Controls.Add(formComTabs);

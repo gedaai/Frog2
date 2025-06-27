@@ -11,43 +11,45 @@ namespace Frog.Utilitarios
 {
     public static class UtilBanco
     {
-        public static void AbrirConexaoComBancoDeDados(this OracleConnection conn)
-        {
-            FecharConexaoComBancoDeDados(conn);
+        public static OracleConnection _conn = null;
 
-            if (conn.State == ConnectionState.Closed)
+        public static void AbrirConexaoComBancoDeDados()
+        {
+            FecharConexaoComBancoDeDados();
+
+            if (_conn.State == ConnectionState.Closed)
             {
-                conn.Open();
-                conn.AutoCommit = false;
+                _conn.Open();
+                _conn.AutoCommit = false;
             }
         }
 
-        public static void FecharConexaoComBancoDeDados(this OracleConnection conn)
+        public static void FecharConexaoComBancoDeDados()
         {
-            if (conn == null)
+            if (_conn == null)
                 return;
 
-            if (conn.State != ConnectionState.Closed)
+            if (_conn.State != ConnectionState.Closed)
             {
-                conn.Close();
+                _conn.Close();
             }
         }
 
-        public static void Commit(this OracleConnection conn)
+        public static void Commit()
         {
-            conn.Commit();
+            _conn.Commit();
         }
 
-        public static void Rollback(this OracleConnection conn)
+        public static void Rollback()
         {
-            conn.Rollback();
+            _conn.Rollback();
         }
 
-        public static int RecuperarQuantidadeRegistrosDaQuery(this OracleConnection conn, string query)
+        public static int RecuperarQuantidadeRegistrosDaQuery(string query)
         {
             var queryQuantidade = $"select count(*) from ( {query} )";
 
-            var command = new OracleCommand(queryQuantidade, conn);
+            var command = new OracleCommand(queryQuantidade, _conn);
             var reader = command.ExecuteReader();
 
             reader.Read();
@@ -55,21 +57,21 @@ namespace Frog.Utilitarios
             return Convert.ToInt32(reader.GetValue(0));
         }
 
-        public static OracleDataReader RecuperarColunasCabecalhoDaGrid(this OracleConnection conn, string query)
+        public static OracleDataReader RecuperarColunasCabecalhoDaGrid(string query)
         {
             var queryQuantidade = $"select * from ( {query} ) where rownum = 1";
 
-            var command = new OracleCommand(queryQuantidade, conn);
+            var command = new OracleCommand(queryQuantidade, _conn);
             return command.ExecuteReader();
         }
 
-        public static void IdentificaTipoObjeto(this OracleConnection conn, string nome)
+        public static void IdentificaTipoObjeto(string nome)
         {
             var query = $@"SELECT object_type
                             FROM user_objects
                            where object_name = '{nome.ToUpper().Trim()}'";
 
-            var command = new OracleCommand(query, conn);
+            var command = new OracleCommand(query, _conn);
             var reader = command.ExecuteReader();
 
             reader.Read();
@@ -87,17 +89,17 @@ namespace Frog.Utilitarios
 
             if (tipo.ToUpper().Trim().Equals("TABLE"))
             {
-                var window = new WinTabela(conn, nome.ToUpper().Trim());
+                var window = new WinTabela(_conn, nome.ToUpper().Trim());
                 window.Show();
             }
             else
             {
-                var window = new WinObjetos(conn, nome.ToUpper().Trim(), tipo.ToUpper().Trim());
+                var window = new WinObjetos(_conn, nome.ToUpper().Trim(), tipo.ToUpper().Trim());
                 window.Show();
             }            
         }
 
-        public static string RecuperarSourceObjeto(this OracleConnection conn, string nome, string tipo)
+        public static string RecuperarSourceObjeto(string nome, string tipo)
         {
             var query = string.Empty;
 
@@ -111,7 +113,7 @@ namespace Frog.Utilitarios
                             where name = '{nome.ToUpper().Trim()}'
                               and type = '{tipo.ToUpper().Trim()}'";
 
-            var command = new OracleCommand(query, conn);
+            var command = new OracleCommand(query, _conn);
             var reader = command.ExecuteReader();
 
             StringBuilder codigo = new StringBuilder();

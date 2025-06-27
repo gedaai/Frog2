@@ -48,7 +48,7 @@ namespace Frog
 
         public void CarregarSource()
         {
-            var source = _conn.RecuperarSourceObjeto(_nomeObjeto, _type);
+            var source = UtilBanco.RecuperarSourceObjeto(_nomeObjeto, _type);
 
             rtSource.Text = source;
 

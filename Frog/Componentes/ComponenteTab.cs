@@ -14,17 +14,13 @@ namespace Frog
 {
     public partial class ComponenteTab : UserControl
     {
-        OracleConnection _conn;
-
-        public ComponenteTab(OracleConnection conn)
+        public ComponenteTab()
         {
             InitializeComponent();
 
-            _conn = conn;
-
             tabControl1.Dock = DockStyle.Fill;
 
-            var formComTabs = new ComponenteAba(_conn);
+            var formComTabs = new ComponenteAba();
             formComTabs.Dock = DockStyle.Fill;            
             tabPage1.Controls.Add(formComTabs);
             formComTabs.Show();
@@ -45,7 +41,7 @@ namespace Frog
                 tabControl1.TabPages.Insert(qtde - 1, novaAba);
                 tabControl1.SelectedIndex = qtde - 1;
 
-                var formComTabs = new ComponenteAba(_conn);
+                var formComTabs = new ComponenteAba();
                 formComTabs.Dock = DockStyle.Fill;
                 novaAba.Controls.Add(formComTabs);
                 formComTabs.Show();

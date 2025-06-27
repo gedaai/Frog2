@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\desenvolvimento\\Particular\\Frog2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|c:\\desenvolvimento\\particular\\frog2\\frog\\utilitarios\\utilbanco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\utilitarios\\utilbanco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|C:\\desenvolvimento\\Particular\\Frog2\\frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|c:\\desenvolvimento\\particular\\frog2\\frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|c:\\desenvolvimento\\particular\\frog2\\frog\\componentes\\componenteaba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\componentes\\componenteaba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|C:\\desenvolvimento\\Particular\\Frog2\\frog\\classes\\conexoesbanco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\classes\\conexoesbanco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|c:\\desenvolvimento\\particular\\frog2\\frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,55 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ComponenteAba.cs",
-              "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Componentes\\ComponenteAba.cs",
-              "RelativeDocumentMoniker": "Frog\\Componentes\\ComponenteAba.cs",
-              "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Componentes\\ComponenteAba.cs",
-              "RelativeToolTip": "Frog\\Componentes\\ComponenteAba.cs",
-              "ViewState": "AQIAAEMAAAAAAAAAAAAowHQAAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T16:50:43.553Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UtilBanco.cs",
-              "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Utilitarios\\UtilBanco.cs",
-              "RelativeDocumentMoniker": "Frog\\Utilitarios\\UtilBanco.cs",
-              "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Utilitarios\\UtilBanco.cs",
-              "RelativeToolTip": "Frog\\Utilitarios\\UtilBanco.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAqwA8AAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T16:35:35.692Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ConexoesBanco.cs",
-              "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Classes\\ConexoesBanco.cs",
-              "RelativeDocumentMoniker": "Frog\\Classes\\ConexoesBanco.cs",
-              "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Classes\\ConexoesBanco.cs",
-              "RelativeToolTip": "Frog\\Classes\\ConexoesBanco.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T14:31:59.136Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Form1.cs",
               "RelativeDocumentMoniker": "Frog\\Form1.cs",
               "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Form1.cs",
               "RelativeToolTip": "Frog\\Form1.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAUwBAAAAAmAAAA",
+              "ViewState": "AQIAACcAAAAAAAAAAAAowEYAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T13:40:23.58Z",
+              "WhenOpened": "2025-06-27T17:03:32.825Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Form1.cs",
+              "RelativeDocumentMoniker": "Frog\\Form1.cs",
+              "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Form1.cs [Design]",
+              "RelativeToolTip": "Frog\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T17:03:29.286Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

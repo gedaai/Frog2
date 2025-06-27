@@ -16,12 +16,10 @@ namespace Frog.Componentes
 {
     public partial class ComponenteAba : UserControl
     {
-        OracleConnection _conn;
 
-        public ComponenteAba(OracleConnection conn)
+        public ComponenteAba()
         {
             InitializeComponent();
-            _conn = conn;
 
             splitContainer1.Dock = DockStyle.Fill;
             txtArea.Dock = DockStyle.Fill;
@@ -30,7 +28,6 @@ namespace Frog.Componentes
             tabPageResultados.Dock = DockStyle.Fill;
             txtGrid.Dock = DockStyle.Fill;
             txtLog.Dock = DockStyle.Fill;
-
         }
 
         private void txtArea_KeyDown(object sender, KeyEventArgs e)
@@ -50,7 +47,7 @@ namespace Frog.Componentes
             else if (e.KeyCode == Keys.F4)
             {
                 var nome = txtArea.RecuperarPalavraDoCursor();
-                _conn.IdentificaTipoObjeto(nome);
+                UtilBanco.IdentificaTipoObjeto(nome);
 
                 e.SuppressKeyPress = true;
             }
@@ -72,7 +69,7 @@ namespace Frog.Componentes
 
             if (String.IsNullOrEmpty(consulta)) return;
 
-            if (_conn == null)
+            if (UtilBanco._conn == null)
             {
                 MessageBox.Show("Não conectado ao banco de dados", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -94,7 +91,7 @@ namespace Frog.Componentes
             {
                 var query = comando;
 
-                var qtdeLinhas = _conn.RecuperarQuantidadeRegistrosDaQuery(query);
+                var qtdeLinhas = UtilBanco.RecuperarQuantidadeRegistrosDaQuery(query);
 
                 if (qtdeLinhas <= 0)
                 {
@@ -102,7 +99,7 @@ namespace Frog.Componentes
                     return;
                 }
 
-                var reader = _conn.RecuperarColunasCabecalhoDaGrid(query);
+                var reader = UtilBanco.RecuperarColunasCabecalhoDaGrid(query);
 
                 var colunas = new DataGridViewColumn[reader.FieldCount];
                 while (reader.Read())
@@ -114,7 +111,7 @@ namespace Frog.Componentes
                     }
                     break;
                 }
-                var command = new OracleCommand(query, _conn);
+                var command = new OracleCommand(query, UtilBanco._conn);
                 reader = command.ExecuteReader();
 
                 if (tabResultados.SelectedIndex != 0)
@@ -150,7 +147,7 @@ namespace Frog.Componentes
         {
             try
             {
-                var command = new OracleCommand(comando, _conn);
+                var command = new OracleCommand(comando, UtilBanco._conn);
                 var exec = command.ExecuteReader();
 
                 var linhasAfetadas = exec.RecordsAffected;

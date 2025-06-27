@@ -57,9 +57,9 @@ namespace Frog
                              where table_name = '{_nomeTabela.ToUpper().Trim()}' 
                              order by column_id  ";
 
-            var qtdeLinhas = _conn.RecuperarQuantidadeRegistrosDaQuery(query);
+            var qtdeLinhas = UtilBanco.RecuperarQuantidadeRegistrosDaQuery(query);
 
-            var reader = _conn.RecuperarColunasCabecalhoDaGrid(query);
+            var reader = UtilBanco.RecuperarColunasCabecalhoDaGrid(query);
 
             var colunas = new DataGridViewColumn[reader.FieldCount];
             while (reader.Read())
@@ -86,9 +86,9 @@ namespace Frog
                               from user_triggers
                             where table_name = '{_nomeTabela.ToUpper().Trim()}' ";
 
-            var qtdeLinhas = _conn.RecuperarQuantidadeRegistrosDaQuery(query);
+            var qtdeLinhas = UtilBanco.RecuperarQuantidadeRegistrosDaQuery(query);
 
-            var reader = _conn.RecuperarColunasCabecalhoDaGrid(query);
+            var reader = UtilBanco.RecuperarColunasCabecalhoDaGrid(query);
 
             var colunas = new DataGridViewColumn[reader.FieldCount];
             while (reader.Read())
@@ -155,7 +155,7 @@ namespace Frog
                 DataGridViewRow selectedRow = dataGridTriggers.SelectedRows[0];
                 string valor = selectedRow.Cells[0].Value.ToString();
 
-                var source = _conn.RecuperarSourceObjeto(valor, "TRIGGER");
+                var source = UtilBanco.RecuperarSourceObjeto(valor, "TRIGGER");
 
                 txtTriggerSource.Text = source;
             }            
