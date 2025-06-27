@@ -37,6 +37,7 @@
             btnRollback = new Button();
             panel1 = new Panel();
             panelMenu = new Panel();
+            comboConexoes = new ComboBox();
             SuspendLayout();
             // 
             // btnExecutar
@@ -52,15 +53,14 @@
             // 
             // txtConexaoBanco
             // 
-            txtConexaoBanco.Location = new Point(12, 8);
+            txtConexaoBanco.Location = new Point(185, 8);
             txtConexaoBanco.Name = "txtConexaoBanco";
             txtConexaoBanco.Size = new Size(469, 23);
             txtConexaoBanco.TabIndex = 2;
-            txtConexaoBanco.Text = "User Id=e2desenv;Password=usetudo;Data Source=192.168.0.2:1521/desenve2";
             // 
             // btnConectar
             // 
-            btnConectar.Location = new Point(487, 7);
+            btnConectar.Location = new Point(660, 7);
             btnConectar.Name = "btnConectar";
             btnConectar.Size = new Size(75, 23);
             btnConectar.TabIndex = 3;
@@ -71,7 +71,7 @@
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Location = new Point(569, 10);
+            lblStatus.Location = new Point(742, 10);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(88, 15);
             lblStatus.TabIndex = 5;
@@ -115,11 +115,22 @@
             panelMenu.TabIndex = 11;
             panelMenu.Visible = false;
             // 
+            // comboConexoes
+            // 
+            comboConexoes.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboConexoes.FormattingEnabled = true;
+            comboConexoes.Location = new Point(14, 7);
+            comboConexoes.Name = "comboConexoes";
+            comboConexoes.Size = new Size(167, 23);
+            comboConexoes.TabIndex = 12;
+            comboConexoes.SelectedValueChanged += comboConexoes_SelectedValueChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(665, 564);
+            ClientSize = new Size(871, 564);
+            Controls.Add(comboConexoes);
             Controls.Add(panelMenu);
             Controls.Add(panel1);
             Controls.Add(btnRollback);
@@ -146,5 +157,6 @@
         private Button btnRollback;
         private Panel panel1;
         private Panel panelMenu;
+        private ComboBox comboConexoes;
     }
 }

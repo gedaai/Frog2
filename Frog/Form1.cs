@@ -1,5 +1,7 @@
+using Frog.Classes;
 using Frog.Componentes;
 using Frog.Utilitarios;
+using Microsoft.Extensions.Configuration;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Configuration;
@@ -12,6 +14,8 @@ namespace Frog
     public partial class Form1 : Form
     {
         OracleConnection _conn = null;
+        private IConfiguration _configuration;
+        private List<ConexoesBanco> conexoes = new List<ConexoesBanco>();
 
         public Form1()
         {
@@ -23,8 +27,7 @@ namespace Frog
             barraMenu.Show();
 
             TamanhoTela();
-
-            
+            CarregarConexoes();
         }
 
         private void btnConectar_Click(object sender, EventArgs e)
@@ -84,6 +87,39 @@ namespace Frog
 
             panel1.Width = (int)(windowWidth - 22);
             panel1.Height = (int)(windowHeight - 90);
+        }
+
+        private void CarregarConexoes()
+        {
+            var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+            _configuration = builder.Build();
+
+            var connectionStrings = _configuration.GetSection("ConnectionStrings").GetChildren();
+
+            foreach (var conn in connectionStrings)
+            {
+                var con = new ConexoesBanco
+                {
+                    Chave = conn.Key,
+                    Conteudo = conn.Value
+                };
+
+                conexoes.Add(con);
+
+                comboConexoes.Items.Add(conn.Key);
+            }
+
+            comboConexoes.SelectedItem = conexoes[0].Chave;
+        }
+
+        private void comboConexoes_SelectedValueChanged(object sender, EventArgs e)
+        {
+            var selectedValue = comboConexoes.SelectedItem.ToString();
+
+            txtConexaoBanco.Text = conexoes.Where(x => x.Chave == selectedValue).FirstOrDefault().Conteudo;
         }
     }
 }
