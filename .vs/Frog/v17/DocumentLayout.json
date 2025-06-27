@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\desenvolvimento\\Particular\\Frog2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|c:\\desenvolvimento\\particular\\frog2\\frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|c:\\desenvolvimento\\particular\\frog2\\frog\\componentes\\componenteaba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\componentes\\componenteaba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|c:\\desenvolvimento\\particular\\frog2\\frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|c:\\desenvolvimento\\particular\\frog2\\frog\\componentes\\componenteaba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C9D2A3D2-D0CE-420E-9B4B-A1EC968BC5C5}|Frog\\Frog.csproj|solutionrelative:frog\\componentes\\componenteaba.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,26 +27,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Form1.cs",
-              "RelativeDocumentMoniker": "Frog\\Form1.cs",
-              "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Form1.cs",
-              "RelativeToolTip": "Frog\\Form1.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAowEYAAAApAAAA",
+              "Title": "ComponenteAba.cs",
+              "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Componentes\\ComponenteAba.cs",
+              "RelativeDocumentMoniker": "Frog\\Componentes\\ComponenteAba.cs",
+              "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Componentes\\ComponenteAba.cs",
+              "RelativeToolTip": "Frog\\Componentes\\ComponenteAba.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAmwCIAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T17:03:32.825Z",
+              "WhenOpened": "2025-06-27T17:25:32.661Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Form1.cs",
-              "RelativeDocumentMoniker": "Frog\\Form1.cs",
-              "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Form1.cs [Design]",
-              "RelativeToolTip": "Frog\\Form1.cs [Design]",
+              "Title": "ComponenteAba.cs [Design]",
+              "DocumentMoniker": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Componentes\\ComponenteAba.cs",
+              "RelativeDocumentMoniker": "Frog\\Componentes\\ComponenteAba.cs",
+              "ToolTip": "C:\\desenvolvimento\\Particular\\Frog2\\Frog\\Componentes\\ComponenteAba.cs [Design]",
+              "RelativeToolTip": "Frog\\Componentes\\ComponenteAba.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T17:03:29.286Z",
+              "WhenOpened": "2025-06-27T17:25:30.728Z",
               "EditorCaption": " [Design]"
             }
           ]

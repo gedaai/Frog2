@@ -1,6 +1,6 @@
 ﻿namespace Frog
 {
-    partial class Form1
+    partial class WinPrincipal
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinPrincipal));
             btnExecutar = new Button();
             txtConexaoBanco = new TextBox();
             btnConectar = new Button();

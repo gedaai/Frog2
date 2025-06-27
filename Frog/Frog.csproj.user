@@ -10,13 +10,13 @@
     <Compile Update="Componentes\ComponenteTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Form1.cs">
+    <Compile Update="Forms\WinPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="WinObjetos.cs">
+    <Compile Update="Forms\WinObjetos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="WinTabela.cs">
+    <Compile Update="Forms\WinTabela.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

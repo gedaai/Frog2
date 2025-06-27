@@ -12,12 +12,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Frog
 {
-    public partial class Form1 : Form
+    public partial class WinPrincipal : Form
     {
         private IConfiguration _configuration;
         private List<ConexoesBanco> conexoes = new List<ConexoesBanco>();
 
-        public Form1()
+        public WinPrincipal()
         {
             InitializeComponent();
 
