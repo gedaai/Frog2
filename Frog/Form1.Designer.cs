@@ -62,7 +62,7 @@
             // 
             btnConectar.Location = new Point(660, 7);
             btnConectar.Name = "btnConectar";
-            btnConectar.Size = new Size(75, 23);
+            btnConectar.Size = new Size(82, 23);
             btnConectar.TabIndex = 3;
             btnConectar.Text = "Conectar";
             btnConectar.UseVisualStyleBackColor = true;
@@ -119,7 +119,7 @@
             // 
             comboConexoes.DropDownStyle = ComboBoxStyle.DropDownList;
             comboConexoes.FormattingEnabled = true;
-            comboConexoes.Location = new Point(14, 7);
+            comboConexoes.Location = new Point(12, 8);
             comboConexoes.Name = "comboConexoes";
             comboConexoes.Size = new Size(167, 23);
             comboConexoes.TabIndex = 12;

@@ -6,6 +6,7 @@ using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Configuration;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -32,6 +33,16 @@ namespace Frog
 
         private void btnConectar_Click(object sender, EventArgs e)
         {
+            if (btnConectar.Text == "Desconectar")
+            {
+                _conn.FecharConexaoComBancoDeDados();
+                _conn = null;
+                lblStatus.Text = "Não conectado";
+                btnConectar.Text = "Conectar";
+                txtConexaoBanco.Enabled = true;
+                return;
+            }
+
             var stringConexao = txtConexaoBanco.Text;
 
             if (String.IsNullOrEmpty(stringConexao))
@@ -55,6 +66,8 @@ namespace Frog
             }
 
             lblStatus.Text = "Conectado";
+            btnConectar.Text = "Desconectar";
+            txtConexaoBanco.Enabled = false;
 
             var formComTabs = new ComponenteTab(_conn);
             formComTabs.Dock = DockStyle.Fill;
