@@ -213,6 +213,7 @@
             Controls.Add(txtConexaoBanco);
             Controls.Add(btnExecutar);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Frog 1.1.1.0";
             Resize += Form1_Resize;
             ((System.ComponentModel.ISupportInitialize)txtGrid).EndInit();

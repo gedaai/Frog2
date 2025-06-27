@@ -2,6 +2,7 @@ using Frog.Componentes;
 using Frog.Utilitarios;
 using Oracle.ManagedDataAccess.Client;
 using System;
+using System.Data;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -16,12 +17,14 @@ namespace Frog
             InitializeComponent();
 
             var barraMenu = new ComponenteBarraMenus();
-           // barraMenu.Dock = DockStyle.Fill;
 
             panelMenu.Controls.Add(barraMenu);
             barraMenu.Show();
 
             TamanhoTela();
+
+            DataSet ds = new DataSet();
+            
         }
 
         private void btnConectar_Click(object sender, EventArgs e)

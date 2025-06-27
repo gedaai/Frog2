@@ -1,9 +1,11 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Frog.Utilitarios
 {
@@ -30,10 +32,18 @@ namespace Frog.Utilitarios
         {
             var linha = 0;
 
+            dataGrid.SuspendLayout();
+            dataGrid.Visible = false;
+                        
             while (reader.Read())
             {
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
+                    if (reader.GetName(i).ToUpper().Trim() == "SIMBOLO")
+                    {
+                        continue;
+                    }
+
                     try
                     {
                         dataGrid.Rows[linha].Cells[i].Value = reader.GetValue(i);
@@ -46,6 +56,9 @@ namespace Frog.Utilitarios
 
                 linha++;
             }
+
+            dataGrid.Visible = true;
+            dataGrid.ResumeLayout();
         }
     }
 }

@@ -125,7 +125,7 @@
             dataGridTriggers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridTriggers.Size = new Size(654, 115);
             dataGridTriggers.TabIndex = 0;
-            dataGridTriggers.CellClick += dataGridTriggers_CellClick;
+            dataGridTriggers.SelectionChanged += dataGridTriggers_SelectionChanged;
             // 
             // txtTriggerSource
             // 
@@ -143,9 +143,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(859, 688);
             Controls.Add(panel1);
+            KeyPreview = true;
             Name = "WinTabela";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Tabela";
             Load += WinTabela_Load;
+            KeyDown += WinTabela_KeyDown;
             Resize += WinTabela_Resize;
             ((System.ComponentModel.ISupportInitialize)dgTabela).EndInit();
             panel1.ResumeLayout(false);

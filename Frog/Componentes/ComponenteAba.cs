@@ -25,11 +25,12 @@ namespace Frog.Componentes
 
             splitContainer1.Dock = DockStyle.Fill;
             txtArea.Dock = DockStyle.Fill;
-            tabResultados.Dock = DockStyle.Fill;    
+            tabResultados.Dock = DockStyle.Fill;
             tabPageDados.Dock = DockStyle.Fill;
             tabPageResultados.Dock = DockStyle.Fill;
             txtGrid.Dock = DockStyle.Fill;
             txtLog.Dock = DockStyle.Fill;
+
         }
 
         private void txtArea_KeyDown(object sender, KeyEventArgs e)
@@ -159,7 +160,7 @@ namespace Frog.Componentes
             {
                 txtLog.Text += Environment.NewLine;
             }
-            
+
             if (tabResultados.SelectedIndex != 1)
                 tabResultados.SelectTab(1);
 

@@ -97,6 +97,21 @@ namespace Frog
                 {
                     colunas[i] = new DataGridViewTextBoxColumn();
                     colunas[i].HeaderText = reader.GetName(i);
+                    
+                    var cellWidth = 100;
+                    if (colunas[i].HeaderText == "NAME")
+                    {
+                        cellWidth = 225;
+                    }
+                    else if (colunas[i].HeaderText == "TYPE")
+                    {
+                        cellWidth = 130;
+                    }
+                    else if (colunas[i].HeaderText == "EVENT")
+                    {
+                        cellWidth = 180;
+                    }
+                    colunas[i].Width = cellWidth;
                 }
                 break;
             }
@@ -123,17 +138,27 @@ namespace Frog
             TamanhoTela();
         }
 
-        private void dataGridTriggers_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void WinTabela_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.RowIndex == -1) return;
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
 
-            var linha = dataGridTriggers.Rows[e.RowIndex];
+                e.SuppressKeyPress = true;
+            }
+        }
 
-            var valor = linha.Cells[0].Value.ToString();
+        private void dataGridTriggers_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridTriggers.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridTriggers.SelectedRows[0];
+                string valor = selectedRow.Cells[0].Value.ToString();
 
-            var source = _conn.RecuperarSourceObjeto(valor, "TRIGGER");
+                var source = _conn.RecuperarSourceObjeto(valor, "TRIGGER");
 
-            txtTriggerSource.Text = source;
+                txtTriggerSource.Text = source;
+            }            
         }
     }
 }

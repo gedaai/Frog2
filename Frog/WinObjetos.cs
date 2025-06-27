@@ -54,5 +54,15 @@ namespace Frog
 
             rtSource.ColorirSQL();
         }
+
+        private void WinObjetos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

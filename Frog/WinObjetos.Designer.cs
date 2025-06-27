@@ -58,9 +58,12 @@
             ClientSize = new Size(826, 634);
             Controls.Add(btnSpecBody);
             Controls.Add(rtSource);
+            KeyPreview = true;
             Name = "WinObjetos";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Package";
             Load += WinPackage_Load;
+            KeyDown += WinObjetos_KeyDown;
             ResumeLayout(false);
         }
 

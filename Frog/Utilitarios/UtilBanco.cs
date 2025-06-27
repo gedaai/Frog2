@@ -99,7 +99,14 @@ namespace Frog.Utilitarios
 
         public static string RecuperarSourceObjeto(this OracleConnection conn, string nome, string tipo)
         {
-            var query = $@"select text
+            var query = string.Empty;
+
+            if (tipo == "VIEW")
+                query = $@"select text
+                             from user_views
+                            where view_name = '{nome.ToUpper().Trim()}'";
+            else
+                query = $@"select text
                              from user_SOURCE 
                             where name = '{nome.ToUpper().Trim()}'
                               and type = '{tipo.ToUpper().Trim()}'";
