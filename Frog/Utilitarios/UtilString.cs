@@ -45,6 +45,17 @@ namespace Frog.Utilitarios
             return string.Join(Environment.NewLine, blockLines);
         }
 
+        public static string[] RecuperarEQuebrarPorComando(this TextBox txtArea)
+        {
+            var textoSelecionado = txtArea.SelectedText;
+            if (string.IsNullOrEmpty(textoSelecionado))
+            {
+                textoSelecionado = txtArea.Text;
+            }
+
+            return textoSelecionado.Split("/");
+        }
+
         public static string RecuperarPalavraDoCursor(this TextBox txtArea)
         {
             int startIndex = txtArea.SelectionStart;

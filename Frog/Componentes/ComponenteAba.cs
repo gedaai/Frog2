@@ -35,9 +35,15 @@ namespace Frog.Componentes
 
         private void txtArea_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F9 || e.KeyCode == Keys.F5)
+            if (e.KeyCode == Keys.F9 || (e.Control && e.KeyCode == Keys.Enter))
             {
                 Executar();
+
+                e.SuppressKeyPress = true;
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                ExecutarComando();
 
                 e.SuppressKeyPress = true;
             }
@@ -125,6 +131,19 @@ namespace Frog.Componentes
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void ExecutarComando()
+        {
+            var comandos = txtArea.RecuperarEQuebrarPorComando();
+            
+            foreach (var comando in comandos)
+            {
+                if (!string.IsNullOrEmpty(comando.Trim()))
+                {
+                    ExecutarComando(comando);
+                }                
+            }            
         }
 
         public void ExecutarComando(string comando)

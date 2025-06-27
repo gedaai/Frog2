@@ -111,7 +111,7 @@
             tabPageResultados.Location = new Point(4, 24);
             tabPageResultados.Name = "tabPageResultados";
             tabPageResultados.Padding = new Padding(3);
-            tabPageResultados.Size = new Size(642, 126);
+            tabPageResultados.Size = new Size(642, 129);
             tabPageResultados.TabIndex = 1;
             tabPageResultados.Text = "Resultado";
             tabPageResultados.UseVisualStyleBackColor = true;
@@ -121,6 +121,7 @@
             txtLog.Location = new Point(0, 0);
             txtLog.Multiline = true;
             txtLog.Name = "txtLog";
+            txtLog.ReadOnly = true;
             txtLog.ScrollBars = ScrollBars.Both;
             txtLog.Size = new Size(642, 143);
             txtLog.TabIndex = 0;
